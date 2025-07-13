@@ -55,13 +55,13 @@ export default function LoginPage() {
                     <GoogleIcon />
                     Login with Google
                   </Button>
-                  <Button variant="outline" type="button" className="w-full">
-                    <AppleIcon />
-                    Login with Apple
-                  </Button>
                   <Button variant="outline" className="w-full">
                     <XIcon />
                     Login with 𝕏
+                  </Button>
+                  <Button variant="outline" type="button" className="w-full">
+                    <AppleIcon />
+                    Login with Apple
                   </Button>
                 </div>
               </div>
