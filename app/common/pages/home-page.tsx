@@ -1,17 +1,68 @@
-import { BookOpen, TrendingUp, Clock, RocketIcon } from "lucide-react";
+import {
+  BookOpen,
+  RocketIcon,
+  FileTextIcon,
+  GlobeIcon,
+  BellIcon,
+  Activity,
+  NotebookPen,
+} from "lucide-react";
 
 import NavBar from "../components/navigation";
 import { Button } from "../components/ui/button";
 import { AnimatedShinyText } from "../components/ui/animated-shiny-text";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "../components/ui/card";
+import { Particles } from "../components/ui/particles";
+import { BentoCard, BentoGrid } from "../components/ui/bento-grid";
+
+const features = [
+  {
+    Icon: FileTextIcon,
+    name: "Dive deeper into your content whenever you want",
+    description:
+      "We systematically archive your content, allowing you to browse past materials and explore them in greater depth.",
+    href: "/",
+    cta: "Learn more",
+    background: <img className="absolute -right-20 -top-20 opacity-60" />,
+    className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
+  },
+  {
+    Icon: NotebookPen,
+    name: "Create your own curriculum",
+    description: "Pursue your own natural curiosity.",
+    href: "/",
+    cta: "Learn more",
+    background: <img className="absolute -right-20 -top-20 opacity-60" />,
+    className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
+  },
+  {
+    Icon: GlobeIcon,
+    name: "Multilingual",
+    description: "Supports 100+ languages and counting.",
+    href: "/",
+    cta: "Learn more",
+    background: <img className="absolute -right-20 -top-20 opacity-60" />,
+    className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
+  },
+  {
+    Icon: Activity,
+    name: "Track your progress",
+    description: "Use the calendar to filter your files by date.",
+    href: "/",
+    cta: "Learn more",
+    background: <img className="absolute -right-20 -top-20 opacity-60" />,
+    className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
+  },
+  {
+    Icon: BellIcon,
+    name: "Notifications",
+    description:
+      "Get notified when someone shares a file or mentions you in a comment.",
+    href: "/",
+    cta: "Learn more",
+    background: <img className="absolute -right-20 -top-20 opacity-60" />,
+    className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
+  },
+];
 
 export default function HomePage() {
   return (
@@ -19,10 +70,10 @@ export default function HomePage() {
       <NavBar />
 
       {/* Hero Section */}
-      <header className="pt-14 relative overflow-hidden">
+      <div className="py-14 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
           <div className="text-center">
-            <div className="flex flex-col items-center gap-8 mb-8">
+            <div className="flex flex-col items-center gap-7 mb-8">
               <AnimatedShinyText
                 shimmerWidth={200}
                 className="flex items-center gap-2 px-4 py-2 rounded-full text-sm border border-accent"
@@ -30,25 +81,19 @@ export default function HomePage() {
                 <RocketIcon className="w-4 h-4" />
                 For Micro-Learning Cravers
               </AnimatedShinyText>
-              {/* <div className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border border-accent">
-                <RocketIcon className="w-4 h-4" />
-                For Micro-Learning Cravers
-              </div> */}
               <h1 className="text-5xl lg:text-6xl font-bold text-foreground animate-slide-up">
                 Seamlessly weave learning
-                <span className="text-primary block">
-                  into your daily routine
-                </span>
+                <span className="text-primary block">into your daily life</span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up animation-delay-200">
-                Receive personalized, bite-sized learning content crafted by AI
-                and delivered to your inbox. Build lasting knowledge without
-                disrupting your busy schedule.
+                Receive micro-learning content on topics of your choice,
+                delivered to your inbox daily. With AI, we create content
+                specifically tailored to your curiosity.
               </p>
             </div>
             <div className="flex flex-col justify-center items-center gap-2">
-              <Button className="px-8 h-14 rounded-lg font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl">
-                Start Learning Today
+              <Button className="px-8 h-13 rounded-lg font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl">
+                Get Started
               </Button>
               <span className="text-sm text-muted-foreground">
                 Try 7 days free. No auto-charge.
@@ -56,74 +101,21 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </header>
+        <Particles className="absolute top-0 w-full h-full" />
+      </div>
 
       {/* Value Proposition */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Why Choose Alexandria?
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Transform scattered moments into meaningful learning opportunities
-              with our intelligent micro-learning platform.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card>
-              <CardHeader>
-                <CardTitle>Card Title</CardTitle>
-                <CardDescription>Card Description</CardDescription>
-                <CardAction>Card Action</CardAction>
-              </CardHeader>
-              <CardContent>
-                <p>Card Content</p>
-              </CardContent>
-              <CardFooter>
-                <p>Card Footer</p>
-              </CardFooter>
-            </Card>
-            {/* <div className="text-center p-6 rounded-xl hover:shadow-lg transition-shadow duration-300">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Brain className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">
-                AI-Personalized Content
-              </h3>
-              <p className="text-gray-600">
-                Advanced AI crafts learning materials tailored to your
-                interests, knowledge level, and learning pace.
-              </p>
-            </div> */}
-
-            <div className="text-center p-6 rounded-xl hover:shadow-lg transition-shadow duration-300">
-              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-8 h-8 text-green-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                Effortless Integration
-              </h3>
-              <p className="text-gray-600">
-                No apps to remember. Learning content arrives in your inbox when
-                you want it, fitting seamlessly into your routine.
-              </p>
-            </div>
-
-            <div className="text-center p-6 rounded-xl hover:shadow-lg transition-shadow duration-300">
-              <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="w-8 h-8 text-purple-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                Track Your Progress
-              </h3>
-              <p className="text-gray-600">
-                Monitor your learning streaks, explore new topics, and watch
-                your knowledge grow over time.
-              </p>
-            </div>
-          </div>
+          <h2 className="text-center text-3xl lg:text-5xl font-bold text-foreground mb-12">
+            The Effortless Way to Cultivate Knowledge and Get Closer to Better
+            Understanding of Anything.
+          </h2>
+          <BentoGrid className="auto-rows-fr">
+            {features.map((feature, idx) => (
+              <BentoCard key={idx} {...feature} />
+            ))}
+          </BentoGrid>
         </div>
       </section>
 

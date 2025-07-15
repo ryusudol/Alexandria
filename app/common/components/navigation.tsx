@@ -10,10 +10,11 @@ import {
   navigationMenuTriggerStyle,
 } from "./ui/navigation-menu";
 import { Separator } from "./ui/separator";
+import { cn } from "~/lib/utils";
 
 export default function NavBar() {
   return (
-    <div className="h-16 container flex items-center justify-between mx-auto py-3 sticky top-0 z-50">
+    <div className="bg-background h-16 px-6 md:px-14 flex items-center justify-between mx-auto sticky top-0 z-50">
       <div className="flex items-center gap-2">
         <Link to="/" className="text-2xl">
           Alexandria
@@ -24,7 +25,10 @@ export default function NavBar() {
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className={navigationMenuTriggerStyle()}
+                className={cn(
+                  navigationMenuTriggerStyle(),
+                  "text-muted-foreground hover:bg-background"
+                )}
               >
                 <Link to="/introduction">Introduction</Link>
               </NavigationMenuLink>
@@ -32,9 +36,23 @@ export default function NavBar() {
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className={navigationMenuTriggerStyle()}
+                className={cn(
+                  navigationMenuTriggerStyle(),
+                  "text-muted-foreground hover:bg-background"
+                )}
               >
                 <Link to="/pricing">Pricing</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                asChild
+                className={cn(
+                  navigationMenuTriggerStyle(),
+                  "text-muted-foreground hover:bg-background"
+                )}
+              >
+                <Link to="/contact">Contact</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
