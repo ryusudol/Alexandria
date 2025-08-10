@@ -11,6 +11,7 @@ import {
 } from "./ui/navigation-menu";
 import { Separator } from "./ui/separator";
 import { cn } from "~/lib/utils";
+import { SunIcon } from "lucide-react";
 
 export default function NavBar() {
   return (
@@ -19,7 +20,7 @@ export default function NavBar() {
         <Link to="/" className="text-2xl">
           Alexandria
         </Link>
-        <Separator orientation="vertical" className="!h-6 ml-3 bg-border" />
+        <Separator orientation="vertical" className="!h-6 ml-3 bg-accent" />
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
@@ -58,13 +59,21 @@ export default function NavBar() {
           </NavigationMenuList>
         </NavigationMenu>
       </div>
-      <div className="flex gap-2">
-        <Button variant="ghost" asChild>
-          <Link to="/auth/login">Login</Link>
-        </Button>
-        <Button className="font-medium" asChild>
-          <Link to="/auth/join">Join</Link>
-        </Button>
+      <div className="flex items-center gap-2">
+        <div>
+          <Button size="icon" variant="ghost">
+            <SunIcon />
+          </Button>
+        </div>
+        <Separator orientation="vertical" className="!h-6 bg-accent" />
+        <div className="flex gap-2">
+          <Button variant="ghost" asChild>
+            <Link to="/auth/login">Login</Link>
+          </Button>
+          <Button className="font-medium" asChild>
+            <Link to="/auth/join">Join</Link>
+          </Button>
+        </div>
       </div>
     </div>
   );

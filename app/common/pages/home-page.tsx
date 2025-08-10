@@ -13,6 +13,8 @@ import { Button } from "../components/ui/button";
 import { AnimatedShinyText } from "../components/ui/animated-shiny-text";
 import { Particles } from "../components/ui/particles";
 import { BentoCard, BentoGrid } from "../components/ui/bento-grid";
+import { Meteors } from "../components/ui/meteors";
+import { Link } from "react-router";
 
 const features = [
   {
@@ -93,7 +95,7 @@ export default function HomePage() {
             </div>
             <div className="flex flex-col justify-center items-center gap-2">
               <Button className="px-8 h-13 rounded-lg font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl">
-                Get Started
+                <Link to="/auth/join">Get Started</Link>
               </Button>
               <span className="text-sm text-muted-foreground">
                 Try 7 days free. No auto-charge.
@@ -102,6 +104,7 @@ export default function HomePage() {
           </div>
         </div>
         <Particles className="absolute top-0 w-full h-full" />
+        <Meteors />
       </div>
 
       {/* Value Proposition */}

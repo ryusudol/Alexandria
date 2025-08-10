@@ -1,4 +1,3 @@
-import { GalleryVerticalEnd } from "lucide-react";
 import { Form, Link } from "react-router";
 
 import { Particles } from "~/common/components/ui/particles";
@@ -6,6 +5,7 @@ import { Label } from "~/common/components/ui/label";
 import { Input } from "~/common/components/ui/input";
 import { Button } from "~/common/components/ui/button";
 import { AppleIcon, GoogleIcon, XIcon } from "../components/icons";
+import { Meteors } from "~/common/components/ui/meteors";
 
 export default function JoinPage() {
   return (
@@ -104,7 +104,7 @@ export default function JoinPage() {
           </div>
         </div>
       </div>
-      <Particles className="absolute h-full w-full" />
+      <Particles className="absolute top-0 size-full" />
     </div>
   );
 }
