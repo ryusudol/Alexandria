@@ -1,13 +1,41 @@
 import { GalleryVerticalEnd } from "lucide-react";
-import { Form, Link } from "react-router";
+import { Form, Link, redirect } from "react-router";
+import type { Route } from "./+types/login-page";
 
 import { Button } from "~/common/components/ui/button";
 import { Input } from "~/common/components/ui/input";
 import { Label } from "~/common/components/ui/label";
 import { Particles } from "~/common/components/ui/particles";
 import { AppleIcon, GoogleIcon, XIcon } from "../components/icons";
+import { createSupabaseServerClient, redirectIfAuthenticated } from "~/lib/auth.server";
 
-export default function LoginPage() {
+export async function loader({ request }: Route.LoaderArgs) {
+  await redirectIfAuthenticated(request);
+  return null;
+}
+
+export async function action({ request }: Route.ActionArgs) {
+  const formData = await request.formData();
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
+
+  const { supabase, headers } = createSupabaseServerClient(request);
+
+  const { error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+
+  if (error) {
+    return {
+      error: error.message,
+    };
+  }
+
+  return redirect("/dashboard", { headers });
+}
+
+export default function LoginPage({ actionData }: Route.ComponentProps) {
   return (
     <div className="relative grid min-h-svh">
       <div className="flex flex-col gap-4 p-6 md:p-10">
@@ -22,12 +50,18 @@ export default function LoginPage() {
                 <p className="text-muted-foreground text-sm text-balance">
                   Enter your email and password below to login
                 </p>
+                {actionData?.error && (
+                  <div className="text-sm text-red-500 text-center">
+                    {actionData.error}
+                  </div>
+                )}
               </div>
               <div className="grid gap-5">
                 <div className="grid gap-2">
                   <Label htmlFor="email">Email</Label>
                   <Input
                     id="email"
+                    name="email"
                     type="email"
                     placeholder="email@example.com"
                     required
@@ -37,6 +71,7 @@ export default function LoginPage() {
                   <Label htmlFor="password">Password</Label>
                   <Input
                     id="password"
+                    name="password"
                     type="password"
                     placeholder="********"
                     required
