@@ -11,4 +11,7 @@ export default [
     route("login", "features/auth/pages/login-page.tsx"),
     route("join", "features/auth/pages/join-page.tsx"),
   ]),
+  ...prefix("dashboard", [
+    index("features/dashboard/pages/dashboard-page.tsx"),
+  ]),
 ] satisfies RouteConfig;
